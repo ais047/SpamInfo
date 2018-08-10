@@ -6,6 +6,8 @@ import string
 import json
 import argparse
 
+userpasslist = open('userpasslist.txt', 'w+')
+
 if len(sys.argv) > 1:
     parser = argparse.ArgumentParser(description='Send Spam info to a place.')
     parser.add_argument("-l", "--link", required=True, help="path to url")
@@ -38,4 +40,8 @@ for name in names:
         passkey: password
     })
 
+    userpasslist.write('%s : %s \n' % (username, password))
+
     print ('%s user: %s and %s password: %s to %s' % (userkey, username, passkey, password, url))
+
+userpasslist.close()
